@@ -1,4 +1,4 @@
-package Model;
+package ca.camera.model;
 
 public class DoFCalculator {
 }
