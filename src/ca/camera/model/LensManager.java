@@ -11,6 +11,10 @@ public class LensManager implements Iterable<Lens> {
         lenses.add(lens);
     }
 
+    public Lens get(int i){
+        return lenses.get(i);
+    }
+
     @Override
     public Iterator<Lens> iterator() {
         return lenses.iterator();

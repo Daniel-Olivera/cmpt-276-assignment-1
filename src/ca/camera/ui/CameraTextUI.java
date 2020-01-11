@@ -10,7 +10,6 @@ import java.util.Scanner;
  * You may change any part of this!
  */
 public class CameraTextUI {
-    private static final double COC = 0.029;    // "Circle of Confusion" for a "Full Frame" camera
     private LensManager manager;
     private Scanner in = new Scanner(System.in);// Read from keyboard
 

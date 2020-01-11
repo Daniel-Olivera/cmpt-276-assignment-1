@@ -1,3 +1,4 @@
+import ca.camera.model.DoFCalculator;
 import ca.camera.model.LensManager;
 import ca.camera.ui.CameraTextUI;
 

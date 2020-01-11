@@ -1,8 +1,8 @@
 package ca.camera.model;
 
 public class Lens {
-    public  String make;
-    public  double maxAperture;
+    public String make;
+    public double maxAperture;
     public  int focalLength;
 
     public Lens(String make, double maxAperture, int focalLength) {
