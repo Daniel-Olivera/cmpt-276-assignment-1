@@ -6,6 +6,5 @@ public class Main {
         LensManager manager = new LensManager();
         CameraTextUI ui = new CameraTextUI(manager);
         ui.show();
-
     }
 }

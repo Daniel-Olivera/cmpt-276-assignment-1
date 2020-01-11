@@ -38,6 +38,8 @@ public class CameraTextUI {
                 + lens.getFocalLength() + "mm, F" + lens.getMaxAperture());
                 lensCount++;
             }
+            System.out.println("-1 to exit");
+
             int input = in.nextInt();
 
             switch(input){
@@ -58,7 +60,7 @@ public class CameraTextUI {
                     System.out.println("Done!");
                     break;
                 default:
-                    System.out.println("ERROR: that does not exist in the list");
+                    System.out.println("ERROR: Invalid lens index");
             }
         }
 

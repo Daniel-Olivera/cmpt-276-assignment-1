@@ -1,9 +1,9 @@
 package ca.camera.model;
 
 public class Lens {
-    private static String make;
-    private static double maxAperture;
-    private static int focalLength;
+    public  String make;
+    public  double maxAperture;
+    public  int focalLength;
 
     public Lens(String make, double maxAperture, int focalLength) {
         this.make = make;
@@ -11,28 +11,17 @@ public class Lens {
         this.focalLength = focalLength;
     }
 
-    public static String getMake() {
+    public String getMake() {
         return make;
     }
 
-    public void setMake(String make) {
-        this.make = make;
-    }
-
-    public static double getMaxAperture() {
+    public double getMaxAperture() {
         return maxAperture;
     }
 
-    public void setMaxAperture(float maxAperture) {
-        this.maxAperture = maxAperture;
-    }
-
-    public static int getFocalLength() {
+    public int getFocalLength() {
         return focalLength;
     }
 
-    public void setFocalLength(int focalLength) {
-        this.focalLength = focalLength;
-    }
 }
 
