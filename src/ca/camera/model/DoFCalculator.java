@@ -20,11 +20,12 @@ public class DoFCalculator {
         int focal = hyperLens.getFocalLength();
 
         if(fValue < aperture){
-            System.out.println("ERROR: Invalid F-value");
-            
+            System.out.println("-----------ERROR: Invalid F-value------------");
+            System.out.println("Defaulting to maximum aperture of: " + aperture);
+            return ((focal*focal)/(aperture*COC))/1000;
+
         }
 
-        double hyperDist = (focal^2)/(fValue*COC);
-        return hyperDist;
+        return ((focal*focal)/(fValue*COC))/1000;
     }
 }

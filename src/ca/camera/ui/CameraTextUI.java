@@ -41,19 +41,26 @@ public class CameraTextUI {
             System.out.println("-1 to exit");
 
             int input = in.nextInt();
-            System.out.println("Choose an F value: ");
-            double aperture = in.nextDouble();
+            double aperture;
             switch(input){
                 case(0):
+                    System.out.println("Choose an F value: ");
+                    aperture = in.nextDouble();
                     System.out.println("You picked 0: hyperfocal distance is: " + dofCalc.getHyperDist(input,aperture));
                     break;
                 case(1):
+                    System.out.println("Choose an F value: ");
+                    aperture = in.nextDouble();
                     System.out.println("You picked 1: hyperfocal distance is: " + dofCalc.getHyperDist(input,aperture));
                     break;
                 case(2):
+                    System.out.println("Choose an F value: ");
+                    aperture = in.nextDouble();
                     System.out.println("You picked 2: hyperfocal distance is: " + dofCalc.getHyperDist(input,aperture));
                     break;
                 case(3):
+                    System.out.println("Choose an F value: ");
+                    aperture = in.nextDouble();
                     System.out.println("You picked 3: hyperfocal distance is: " + dofCalc.getHyperDist(input,aperture));
                     break;
                 case(-1):
