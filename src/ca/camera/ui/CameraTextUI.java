@@ -2,6 +2,7 @@ package ca.camera.ui;
 
 import ca.camera.model.Lens;
 import ca.camera.model.LensManager;
+import ca.camera.model.DoFCalculator;
 import java.text.DecimalFormat;
 import java.util.Scanner;
 
@@ -27,7 +28,7 @@ public class CameraTextUI {
     }
 
     public void show() {
-
+        DoFCalculator dofCalc = new DoFCalculator(manager);
         boolean isDone = false;
         while(!isDone){
             int lensCount = 0;
@@ -40,19 +41,20 @@ public class CameraTextUI {
             System.out.println("-1 to exit");
 
             int input = in.nextInt();
-
+            System.out.println("Choose an F value: ");
+            double aperture = in.nextDouble();
             switch(input){
                 case(0):
-                    System.out.println("You picked 0");
+                    System.out.println("You picked 0: hyperfocal distance is: " + dofCalc.getHyperDist(input,aperture));
                     break;
                 case(1):
-                    System.out.println("You picked 1");
+                    System.out.println("You picked 1: hyperfocal distance is: " + dofCalc.getHyperDist(input,aperture));
                     break;
                 case(2):
-                    System.out.println("You picked 2");
+                    System.out.println("You picked 2: hyperfocal distance is: " + dofCalc.getHyperDist(input,aperture));
                     break;
                 case(3):
-                    System.out.println("You picked 3");
+                    System.out.println("You picked 3: hyperfocal distance is: " + dofCalc.getHyperDist(input,aperture));
                     break;
                 case(-1):
                     isDone = true;

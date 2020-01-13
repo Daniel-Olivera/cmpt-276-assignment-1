@@ -8,17 +8,23 @@ public class DoFCalculator {
     private LensManager calculate;
     private Scanner in = new Scanner(System.in);
 
-    public DoFCalculator(LensManager calculate, Lens lens) {
+
+    public DoFCalculator(LensManager calculate) {
          this.calculate = calculate;
 
     }
 
-    public double getHyperDist(int index){
+    public double getHyperDist(int index, double fValue){
         Lens hyperLens = calculate.get(index);
+        double aperture = hyperLens.getMaxAperture();
         int focal = hyperLens.getFocalLength();
-        double aperture = in.nextDouble();
 
-        double hyperDist = (focal^2)/(aperture*COC);
+        if(fValue < aperture){
+            System.out.println("ERROR: Invalid F-value");
+            
+        }
+
+        double hyperDist = (focal^2)/(fValue*COC);
         return hyperDist;
     }
 }
