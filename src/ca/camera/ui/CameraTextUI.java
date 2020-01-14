@@ -1,8 +1,6 @@
 package ca.camera.ui;
 
-import ca.camera.model.Lens;
-import ca.camera.model.LensManager;
-import ca.camera.model.DoFCalculator;
+import ca.camera.model.*;
 import java.text.DecimalFormat;
 import java.util.Scanner;
 
@@ -13,7 +11,6 @@ import java.util.Scanner;
 public class CameraTextUI {
     private LensManager manager;
     private Scanner in = new Scanner(System.in);// Read from keyboard
-
 
     public CameraTextUI(LensManager manager) {
         // Accept and store a reference to the lens manager (the model)
@@ -42,26 +39,19 @@ public class CameraTextUI {
 
             int input = in.nextInt();
             double aperture;
+            double dofNear;
             switch(input){
                 case(0):
-                    System.out.println("Choose an F value: ");
-                    aperture = in.nextDouble();
-                    System.out.println("You picked 0: hyperfocal distance is: " + dofCalc.getHyperDist(input,aperture));
-                    break;
                 case(1):
-                    System.out.println("Choose an F value: ");
-                    aperture = in.nextDouble();
-                    System.out.println("You picked 1: hyperfocal distance is: " + dofCalc.getHyperDist(input,aperture));
-                    break;
                 case(2):
-                    System.out.println("Choose an F value: ");
-                    aperture = in.nextDouble();
-                    System.out.println("You picked 2: hyperfocal distance is: " + dofCalc.getHyperDist(input,aperture));
-                    break;
                 case(3):
-                    System.out.println("Choose an F value: ");
+                    System.out.print("Aperture [the F number]: ");
                     aperture = in.nextDouble();
-                    System.out.println("You picked 3: hyperfocal distance is: " + dofCalc.getHyperDist(input,aperture));
+                    System.out.print("Distance to subject[m]: ");
+                    dofNear = in.nextDouble();
+                    System.out.println("DOF Near point is: " + dofCalc.getDofNear(input,aperture,dofNear));
+                    System.out.println("Hyperfocal point is: " + formatM(dofCalc.getHyperDist(input,aperture)/1000) + "m");
+                    System.out.println("-------------------------------------------------------");
                     break;
                 case(-1):
                     isDone = true;
