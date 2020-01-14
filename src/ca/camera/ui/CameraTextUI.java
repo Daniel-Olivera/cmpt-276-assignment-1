@@ -4,10 +4,6 @@ import ca.camera.model.*;
 import java.text.DecimalFormat;
 import java.util.Scanner;
 
-/**
- * Sample (incomplete) text UI to interact with the user.
- * You may change any part of this!
- */
 public class CameraTextUI {
     private LensManager manager;
     private Scanner in = new Scanner(System.in);// Read from keyboard
@@ -35,6 +31,7 @@ public class CameraTextUI {
                 + lens.getFocalLength() + "mm, F" + lens.getMaxAperture());
                 lensCount++;
             }
+
             System.out.println("-1 to exit");
 
             int input = in.nextInt();
@@ -57,11 +54,18 @@ public class CameraTextUI {
 
                     System.out.print("Distance to subject[m]: ");
                     distance = in.nextDouble();
+
                     double dofFar = dofCalc.getDofFar(input,aperture,distance)/1000;
                     double dofNear = dofCalc.getDofNear(input,aperture,distance)/1000;
+                    double hyper = dofCalc.getHyperDist(input,aperture)/1000;
 
-                    System.out.println("In focus: " + formatM(dofNear) + " to " + formatM(dofFar) + "[DoF = " + formatM(dofFar - dofNear) + "]");
-                    System.out.println("Hyperfocal point is: " + formatM(dofCalc.getHyperDist(input,aperture)/1000) + "m");
+                    if(distance > hyper){
+                        System.out.println("In focus: " + formatM(dofNear) + "m to " + '\u221e' + "m, [DoF = " + '\u221e' + "m]");
+                    }
+                    else{
+                        System.out.println("In focus: " + formatM(dofNear) + "m to " + formatM(dofFar) + "m, [DoF = " + formatM(dofFar - dofNear) + "m]");
+                    }
+                    System.out.println("Hyperfocal point: " + formatM(hyper) + "m");
                     System.out.println("-------------------------------------------------------");
                     break;
                 case(-1):
@@ -72,7 +76,6 @@ public class CameraTextUI {
                     System.out.println("ERROR: Invalid lens index");
             }
         }
-
     }
 
     private String formatM(double distanceInM) {

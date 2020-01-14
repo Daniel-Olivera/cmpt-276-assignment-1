@@ -11,15 +11,12 @@ public class DoFCalculator {
 
     public DoFCalculator(LensManager calculate) {
         this.calculate = calculate;
-
     }
 
     public double getHyperDist(int index, double fValue) {
         Lens hyperLens = calculate.get(index);
         double aperture = hyperLens.getMaxAperture();
         int focal = hyperLens.getFocalLength();
-
-
 
         return ((focal * focal) / (fValue * COC));
     }
@@ -28,6 +25,7 @@ public class DoFCalculator {
         Lens nearLens = calculate.get(index);
         double hyper = getHyperDist(index, fValue);
         distance *= 1000;
+
         return (hyper * distance) / (hyper + (distance - (nearLens.getFocalLength())));
 
     }
@@ -36,6 +34,7 @@ public class DoFCalculator {
         Lens farLens = calculate.get(index);
         double hyper = getHyperDist(index, fValue);
         distance *= 1000;
+
         return (hyper * distance) / (hyper - (distance - (farLens.getFocalLength())));
     }
 }
