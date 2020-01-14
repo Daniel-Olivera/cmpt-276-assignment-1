@@ -10,31 +10,32 @@ public class DoFCalculator {
 
 
     public DoFCalculator(LensManager calculate) {
-         this.calculate = calculate;
+        this.calculate = calculate;
 
     }
 
-    public double getHyperDist(int index, double fValue){
+    public double getHyperDist(int index, double fValue) {
         Lens hyperLens = calculate.get(index);
         double aperture = hyperLens.getMaxAperture();
         int focal = hyperLens.getFocalLength();
 
-        if(fValue < aperture){
-            System.out.println("-----------ERROR: Invalid F-value------------");
-            System.out.println("Defaulting to maximum aperture of: " + aperture);
-            return ((focal*focal)/(aperture*COC));
 
-        }
 
-        return ((focal*focal)/(fValue*COC));
+        return ((focal * focal) / (fValue * COC));
     }
 
-
-    public double getDofNear(int index, double fValue, double distance){
+    public double getDofNear(int index, double fValue, double distance) {
         Lens nearLens = calculate.get(index);
-        double hyper = getHyperDist(index,fValue);
+        double hyper = getHyperDist(index, fValue);
+        distance *= 1000;
+        return (hyper * distance) / (hyper + (distance - (nearLens.getFocalLength())));
 
-        return (hyper*distance)/(hyper+(distance - (nearLens.getFocalLength()/1000)));
+    }
 
+    public double getDofFar(int index, double fValue, double distance) {
+        Lens farLens = calculate.get(index);
+        double hyper = getHyperDist(index, fValue);
+        distance *= 1000;
+        return (hyper * distance) / (hyper - (distance - (farLens.getFocalLength())));
     }
 }

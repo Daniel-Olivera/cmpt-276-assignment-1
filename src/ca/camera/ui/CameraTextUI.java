@@ -39,17 +39,28 @@ public class CameraTextUI {
 
             int input = in.nextInt();
             double aperture;
-            double dofNear;
+            double distance;
             switch(input){
                 case(0):
                 case(1):
                 case(2):
                 case(3):
+                    Lens lens = manager.get(input);
+
                     System.out.print("Aperture [the F number]: ");
                     aperture = in.nextDouble();
+                    if (aperture < lens.getMaxAperture()) {
+                        System.out.println("-----------ERROR: Invalid F-value------------");
+                        System.out.println("Defaulting to maximum aperture of: F" + lens.getMaxAperture());
+                        aperture = lens.getMaxAperture();
+                    }
+
                     System.out.print("Distance to subject[m]: ");
-                    dofNear = in.nextDouble();
-                    System.out.println("DOF Near point is: " + dofCalc.getDofNear(input,aperture,dofNear));
+                    distance = in.nextDouble();
+                    double dofFar = dofCalc.getDofFar(input,aperture,distance)/1000;
+                    double dofNear = dofCalc.getDofNear(input,aperture,distance)/1000;
+
+                    System.out.println("In focus: " + formatM(dofNear) + " to " + formatM(dofFar) + "[DoF = " + formatM(dofFar - dofNear) + "]");
                     System.out.println("Hyperfocal point is: " + formatM(dofCalc.getHyperDist(input,aperture)/1000) + "m");
                     System.out.println("-------------------------------------------------------");
                     break;
