@@ -48,8 +48,7 @@ public class CameraTextUI {
                     aperture = in.nextDouble();
                     if (aperture < lens.getMaxAperture()) {
                         System.out.println("-----------ERROR: Invalid F-value------------");
-                        System.out.println("Defaulting to maximum aperture of: F" + lens.getMaxAperture());
-                        aperture = lens.getMaxAperture();
+                        break;
                     }
 
                     System.out.print("Distance to subject[m]: ");

@@ -15,7 +15,6 @@ public class DoFCalculator {
 
     public double getHyperDist(int index, double fValue) {
         Lens hyperLens = calculate.get(index);
-        double aperture = hyperLens.getMaxAperture();
         int focal = hyperLens.getFocalLength();
 
         return ((focal * focal) / (fValue * COC));
