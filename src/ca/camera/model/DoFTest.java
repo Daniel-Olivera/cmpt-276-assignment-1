@@ -56,7 +56,7 @@ public class DoFTest {
 
         assertEquals((hyper * 5000) / (hyper - (5000 - (50))), testDoF.getDofFar(0,3,5));
         assertEquals((hyper2 * 10000) / (hyper2 - (10000 - (200))),testDoF.getDofFar(2,4,10));
-       // assertEquals((hyper3 * 5000) / (hyper - (5000 - (90))),testDoF.getDofFar(1,3,5));
+        assertEquals((hyper3 * 5000) / (hyper3 - (5000 - (90))),testDoF.getDofFar(1,3,5));
 
     }
 }
