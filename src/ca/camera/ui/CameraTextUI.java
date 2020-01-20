@@ -55,7 +55,10 @@ public class CameraTextUI {
 
                     System.out.print("Distance to subject[m]: ");
                     distance = in.nextDouble();
-
+                    if(distance <= 0){
+                        System.out.println("ERROR: distance cannot be less than or equal to 0.");
+                        break;
+                    }
                     double dofFar = dofCalc.getDofFar(input,aperture,distance)/1000;
                     double dofNear = dofCalc.getDofNear(input,aperture,distance)/1000;
                     double hyper = dofCalc.getHyperDist(input,aperture)/1000;

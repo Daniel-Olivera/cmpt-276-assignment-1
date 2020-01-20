@@ -5,7 +5,6 @@ import static org.junit.jupiter.api.Assertions.*;
 
 public class DoFTest {
 
-
     @Test
     void testHyperDist(){
         LensManager testManager = new LensManager();
