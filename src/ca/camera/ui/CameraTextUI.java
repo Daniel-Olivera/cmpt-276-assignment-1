@@ -24,6 +24,7 @@ public class CameraTextUI {
         DoFCalculator dofCalc = new DoFCalculator(manager);
         boolean isDone = false;
         while(!isDone){
+            //prints out the list of lenses
             int lensCount = 0;
             System.out.println("Choose from one of the following lenses:");
             for(Lens lens: manager){
@@ -31,10 +32,10 @@ public class CameraTextUI {
                 + lens.getFocalLength() + "mm, F" + lens.getMaxAperture());
                 lensCount++;
             }
-
+            //exits the program if it receives a -1
             System.out.println("-1 to exit");
-
             int input = in.nextInt();
+
             double aperture;
             double distance;
             switch(input){
@@ -42,6 +43,7 @@ public class CameraTextUI {
                 case(1):
                 case(2):
                 case(3):
+                    //gets a lens with the right index and prints out the information on the lens
                     Lens lens = manager.get(input);
 
                     System.out.print("Aperture [the F number]: ");
